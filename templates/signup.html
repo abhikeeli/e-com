@@ -6,7 +6,7 @@
 
 {% block body %}
 	<div id="topdiv1" class="card">
-		<form class="px-4 py-3" method="POST" action="{{ url_for('signup') }}">
+		<form class="px-4 py-3" method="POST" action="{{ url_for('auth.signup') }}">
 			<h5 class="card-title">Sign Up</h5>
 		    <div class="form-group">
 		      <label for="name">Full Name</label>
@@ -34,6 +34,6 @@
 		    <button type="submit" class="btn btn-primary">Sign up</button>
 		</form>
 		<div class="dropdown-divider"></div>
-		<a class="dropdown-item" href="{{ url_for('login') }}">Already have an account? Log in</a>
+		<a class="dropdown-item" href="{{ url_for('auth.login') }}">Already have an account? Log in</a>
 	</div>
 {% endblock %}

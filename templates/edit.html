@@ -7,7 +7,7 @@
 {% block body %}
 	<div class="container" id="topdiv5">
 		<h5 class="card-title">Edit your Product</h5>
-		<form action="{{ url_for('edit', pro_id = result.product_id) }}" method="POST">
+		<form action="{{ url_for('main.edit', pro_id = result.product_id) }}" method="POST">
 			
 	  		<div class="form-group">
 	    		<label for="exampleFormControlTextarea1">Name</label>

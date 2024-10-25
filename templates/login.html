@@ -13,7 +13,7 @@
 		</div>
 	{% endif %}
 	<div class="card" id="topdiv0">
-			<form class="px-4 py-3" method="POST" action="{{ url_for('login')}}">
+			<form class="px-4 py-3" method="POST" action="{{ url_for('auth.login')}}">
 				<h5 class="card-title">Login as Merchant</h5>
 		    <div class="form-group">
 		      <label for="username">Username</label>
@@ -26,6 +26,6 @@
 		    <button type="submit" class="btn btn-primary">Sign in</button>
 		</form>
 		<div class="dropdown-divider"></div>
-		<a class="dropdown-item" href="{{ url_for('signup') }}">New around here? Sign up</a>
+		<a class="dropdown-item" href="{{ url_for('auth.signup') }}">New around here? Sign up</a>
 	</div>
 {% endblock %}

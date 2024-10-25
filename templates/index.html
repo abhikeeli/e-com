@@ -9,13 +9,13 @@
 		<nav class="navbar navbar-light bg-light">
 			<span class="navbar-brand mb-0 h1">Products</span>
 			{% if not user %}
-			<a class="my-2 my-sm-0 mr-5" href="{{url_for('signup')}}">signup <a class="my-2 my-sm-0"href="{{url_for('login')}}">login</a></a>
+			<a class="my-2 my-sm-0 mr-5" href="{{url_for('auth.signup')}}">signup <a class="my-2 my-sm-0"href="{{url_for('auth.login')}}">login</a></a>
 			{% endif %}
 			{% if user %}
 			    {% if role == "Merchant" %}
-			       <a class="my-2 my-sm-0 mr-5" href="{{url_for('home')}}">{{user}}</a>
+			       <a class="my-2 my-sm-0 mr-5" href="{{url_for('main.home')}}">{{user}}</a>
 			    {% endif %}
-			<a class="my-2 my-sm-0 mr-5" href="{{url_for('logout')}}">logout</a>
+			<a class="my-2 my-sm-0 mr-5" href="{{url_for('auth.logout')}}">logout</a>
 			{% endif %}
 			
 		</nav>

@@ -7,8 +7,8 @@
 {% block body %}
 	<div class="container" id="topdiv4">
 		<nav class="navbar navbar-light bg-light">
-			<a href="{{ url_for('index')}}"><span class="navbar-brand mb-0 h1">View all Products</span></a>
-			<a class="btn btn-outline-info my-2 my-sm-0" href="{{url_for('logout')}}">Logout</a>
+			<a href="{{ url_for('main.index')}}"><span class="navbar-brand mb-0 h1">View all Products</span></a>
+			<a class="btn btn-outline-info my-2 my-sm-0" href="{{url_for('auth.logout')}}">Logout</a>
 		</nav>
 		{% if message %}
 			<div class="alert alert-success" role="alert">
@@ -36,7 +36,7 @@
 	  		</div>
 		</div>
 		<div class="card w-75" id="topdiv2">
-			<form class="card-body" action="{{ url_for('home') }}" method="POST" enctype="multipart/form-data">
+			<form class="card-body" action="{{ url_for('main.home') }}" method="POST" enctype="multipart/form-data">
 				<h5 class="card-title">Add New Item</h5>
 	  			<div class="form-group">
 	    			<label for="category">Name</label>
@@ -82,7 +82,7 @@
 			    				<li class="list-group-item">{{row.comments}}</li>
 			  				</ul>
 			  				<div class="card-body">
-			    				<a href="{{ url_for('edit', pro_id=row.product_id) }}" class="card-link">Edit Product</a>
+			    				<a href="{{ url_for('main.edit', pro_id=row.product_id) }}" class="card-link">Edit Product</a>
 			  				</div>
 						</div>
 					{% endfor %}
