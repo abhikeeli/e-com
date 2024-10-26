@@ -3,14 +3,17 @@ import os
 import uuid
 from models import Product
 from db import db
-from auth import role_required
+from auth import role_required,tokenchecker
 
 main=Blueprint("main",__name__,template_folder="templates")
 
 @main.route('/')
 def index(user=None):
+    tokenchecker()
     user=session.get('username')
     role=session.get('role')
+    print(user)
+    print(role)
     rows = Product.query.all()
     return render_template('index.html',rows=rows,user=user,role=role)
 

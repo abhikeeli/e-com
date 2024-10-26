@@ -8,6 +8,27 @@ from db import db
 
 auth=Blueprint("auth",__name__,template_folder="templates")
 
+def tokenchecker():
+    token = request.cookies.get('token')
+    if(token):
+        try:
+            payload=jwt.decode(token,current_app.config['SECRET_KEY'],algorithms='HS256',salt_length=8)
+            session['username']=payload['username']
+            session['role']=payload['role']
+        except jwt.ExpiredSignatureError:
+                session['username']=None
+                session['role']=None
+                return 1
+        except jwt.InvalidTokenError:
+                session['username']=None
+                session['role']=None
+                return 1
+        return 1
+        
+
+            
+
+
 def role_required(roles):
     def decorator(fun):
         @wraps(fun)

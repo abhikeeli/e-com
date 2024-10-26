@@ -10,7 +10,6 @@ def create_app():
 
     # Initialize the database
     db_init(app)
-
     # Register blueprints
     app.register_blueprint(auth)
     app.register_blueprint(main)
