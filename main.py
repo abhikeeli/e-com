@@ -39,22 +39,32 @@ def home(current_user):
    rows = Product.query.filter_by(merchant_id=current_user)
    return render_template("home.html",rows=rows)
 
-@main.route("/edit/<int:pro_id>",methods=["GET", "POST"], endpoint='edit')
+@main.route("/edit/<int:pro_id>",methods=["GET", "POST","DELETE"], endpoint='edit')
 @role_required('Merchant')
 def edit(pro_id,current_user):
     result = Product.query.filter_by(product_id = pro_id).first()
+    print(result)
     if request.method=="POST":
         if result.merchant_id != current_user:
             return render_template("error.html", message="You are not authorized to edit this product")
-        name = request.form.get("pro_name")
+        name = request.form.get("product_name")
         description = request.form.get("description")
         price_range = request.form.get("price_range")
         comments = request.form.get("comments")
-        result.name = name
+        result.product_name = name
         result.description = description
         result.comments = comments
         result.price_range = price_range
         db.session.commit()
         rows = Product.query.filter_by(merchant_id=current_user)
         return render_template("home.html", rows=rows, message="Product edited")
+    if request.method=="DELETE":
+        if result.merchant_id != current_user:
+            return render_template("error.html", message="You are not authorized to edit this product")
+        db.session.delete(result)
+        print(result)
+        db.session.commit()
+        rows = Product.query.filter_by(merchant_id=current_user)
+        return render_template("home.html", rows=rows, message="Product edited")
+
     return render_template("edit.html", result=result)

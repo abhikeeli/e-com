@@ -25,12 +25,12 @@
 						<div class="card needspace" style="width: 18rem;">
 							<img src="{{ url_for('static', filename= 'images/'+row.filename) }}" class="card-img-top" alt="...">
 							<div class="card-body">
-			    				<h5 class="card-title">{{row.name}}</h5>
+			    				<h5 class="card-title">{{row.product_name}}</h5>
 			    				<p class="card-text">{{row.category}}</p>
 			  				</div>
 			  				<ul class="list-group list-group-flush">
 			  					<li class="list-group-item">{{row.description}}</li>
-			    				<li class="list-group-item">Price Range: {{row.price_range}}</li>
+			    				<li class="list-group-item"> Rs. {{row.price_range}}</li>
 			    				<li class="list-group-item">{{row.comments}}</li>
 			  				</ul>
 						</div>
